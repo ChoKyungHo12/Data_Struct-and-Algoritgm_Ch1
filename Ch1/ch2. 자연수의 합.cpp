@@ -7,6 +7,7 @@ using namespace std;
 void InputNum(int& nStartNum, int& mMultnEndNumiple);
 void TotalSum(const int nStartNum, const int nEndNum);
 
+//자연수 A, B가 주어지면 A부터 B까지의 합을 수식과 함께 출력하세요
 int main(void)
 {
 	int nStartNum = 0;
