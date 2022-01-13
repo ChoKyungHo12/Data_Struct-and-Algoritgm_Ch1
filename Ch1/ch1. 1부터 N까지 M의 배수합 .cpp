@@ -26,7 +26,7 @@ void InputNum(int* mInput, int* mMultiple)
 {
 	while (TRUE)
 	{
-		cout << "M은 3보다 같거나 크게, N는 1000보다 작게 입력(큰값 순서로 입력)" << endl;
+		cout << "M은 "<<UNDER_BOUNDARY <<"보다 같거나 크게, N는 "<< UPPER_BOUNDARY <<"보다 작게 입력(큰값 순서로 입력)" << endl;
 		scanf_s("%d %d", mInput, mMultiple);
 
 		//문제 조건에 맞는 숫자를 입력하는지 확인
