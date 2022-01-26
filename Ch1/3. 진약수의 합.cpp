@@ -37,30 +37,20 @@ void SumDivisor(const int& nInputNum)
 {
 	//nDivisor을 1씩 올려서 나눠서 나머지가 0이면 약수로 판별함
 	int nDivisor = 1;
-	int nSum = 0;
+	int nSum = 1;
 	int nDeadline = nInputNum / 2;
 	int i = 0;
 
-	while (true)
+	cout << "1";
+	for (i = 2; i <= nDeadline; ++i)
 	{
-		if ((nInputNum % nDivisor) == 0)
+		if ((nInputNum % i) == 0)
 		{
-			cout << nDivisor;
-			nSum += nDivisor;
+			cout << " + " << i;
+			nSum += i;
 		}
-
-		if (nDivisor == nDeadline)
-		{
-			cout << " = " << nSum;
-			break;
-		}
-
-		if((nInputNum % nDivisor) == 0)
-		{
-			cout << " + " ;
-		}
-
-		nDivisor++;
 	}
+
+	cout << " = " << nSum;
 
 }

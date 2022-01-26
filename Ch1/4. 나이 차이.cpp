@@ -34,7 +34,6 @@ void InputNum(int& nSize, int szNum[])
 	//나이입력
 	for (i = 0; i < nSize; i++)
 	{
-		cout << "나이 입력" << endl;
 		cin >> szNum[i];
 		if (szNum[i] < 0)
 		{
