@@ -34,35 +34,20 @@ void WarningSignal(const int szDB[],const int nCount, const int nDeadline)
 {
 	int nOverDB = 0;
 	int nTrail = 0;
-	int nFlag = 1;
+	int nFlag = 0;
 
 	for (int i = 0; i < nCount; ++i)
 	{
-		if ((szDB[i] >= nDeadline)&&(nFlag==1))
-		{
-			nTrail++;
-			nFlag = 1;
-		}
-
-		else if((szDB[i] >= nDeadline) && (nFlag == 0))
-		{
-			nTrail++;
+		if (szDB[i] > nDeadline)
 			nFlag == 1;
-		}
-
-		else if ((szDB[i] < nDeadline))
-		{
-			nTrail == 0;
+		else
 			nFlag == 0;
-		}
 
-		if (nOverDB < nTrail)
-			nOverDB == nTrail;
+		if (nFlag == 1)
+			nTrail++;
+		else
 
 	}
-
-	if (nOverDB == 0)
-		nOverDB == -1;
 
 	cout << nOverDB << endl;
 }
