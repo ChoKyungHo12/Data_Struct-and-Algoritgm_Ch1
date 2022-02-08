@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+void SumMaxTemp(vector<int>& vTemperature, const int nData, const int nSumNumber);
 /*
 매일 아침 9시에 학교에서 측정한 온도가 어떤 정수의 수열로 주어졌을 때, 연속적인 며칠
 동안의 온도의 합이 가장 큰 값을 알아보고자 한다.
@@ -23,6 +24,7 @@ using namespace std;
 
 int main(void)
 {
+	freopen("input.txt", "rt", stdin);
 	int nData = 0;
 	int nSumNumber = 0;
 	cin >> nData>> nSumNumber;
@@ -32,6 +34,13 @@ int main(void)
 	{
 		cin >> vTemperature[i];
 	}
+	SumMaxTemp(vTemperature, nData, nSumNumber);
+	return 0;
+}
+
+void SumMaxTemp(vector<int>& vTemperature, const int nData, const int nSumNumber)
+{
+	int i = 0;
 	int nSum = 0;
 	int MaxSum = 0x80000000;
 
@@ -46,25 +55,5 @@ int main(void)
 			MaxSum = nSum;
 		nSum = 0;
 	}
-	cout << "\n\n\n\n\n\n\n\n\n";
 	cout << MaxSum;
 }
-//
-//void SumMaxTemp(const vector<int>&vTemperature, const int nData, const int nSumNumber)
-//{
-//	int i = 0;
-//	int nSum = 0;
-//	int MaxSum = 0x80000000;
-//
-//	for(i=0;i< nData- nSumNumber+1;++i)
-//	{
-//		for (int j = i; j < (i+nSumNumber); ++j)
-//		{
-//			nSum += vTemperature[j];
-//		}
-//
-//		if (MaxSum < nSum)
-//			MaxSum = nSum;
-//	}
-//	cout << MaxSum;
-//}

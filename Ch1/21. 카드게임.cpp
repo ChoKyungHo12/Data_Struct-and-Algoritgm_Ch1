@@ -2,7 +2,7 @@
 #define GAMEROUND 10
 using namespace std;
 void Game(const int nPlayerA[], const int nPlayerB[]);
-void WinOrLose(const int szScoreTable[], const int szWinnerTable[]);
+void WinOrLose(const int szScoreTable[], const int nLastWinner);
 /*
 0부터 9까지의 숫자가 표시된 카드를 가지고 두 사람 A와 B가 게임을 한다. A와 B에게는 각
 각 0에서 9까지의 숫자가 하나씩 표시된 10장의 카드뭉치가 주어진다. 두 사람은 카드를 임의
@@ -66,7 +66,7 @@ void Game(const int nPlayerA[], const int nPlayerB[])
 {
 	//0번이 A점수, 1번이 B점수
 	int szScoreTable[2] = { 0 };
-	int szWinnerTable[GAMEROUND] = { 0 };
+	int nLastWinner = 'D';
 	const int nWinScore = 3;
 	const int nEvenScore = 1;
 	int i = 0;
@@ -78,27 +78,27 @@ void Game(const int nPlayerA[], const int nPlayerB[])
 		{
 			szScoreTable[0] += nEvenScore;
 			szScoreTable[1] += nEvenScore;
-			szWinnerTable[i] = 'D';
+			nLastWinner = 'D';
 		}
 
 		else if (nPlayerA[i] > nPlayerB[i])
 		{
 			szScoreTable[0] += nWinScore;
-			szWinnerTable[i] = 'A';
+			nLastWinner = 'A';
 		}
 
 		else
 		{
 			szScoreTable[1] += nWinScore;
-			szWinnerTable[i] = 'B';
+			nLastWinner = 'B';
 		}
 	}
 
 	//게임 승패 결정
-	WinOrLose(szScoreTable, szWinnerTable);
+	WinOrLose(szScoreTable, nLastWinner);
 }
 
-void WinOrLose(const int szScoreTable[], const int szWinnerTable[])
+void WinOrLose(const int szScoreTable[], const int nLastWinner)
 {
 	int nEvenCounter = 0;
 	int i = 0;
@@ -116,25 +116,6 @@ void WinOrLose(const int szScoreTable[], const int szWinnerTable[])
 		return;
 	}
 
-	for(i =GAMEROUND-1 ; i>=0; --i)
-	{
-		if (szWinnerTable[i] == 'D')
-		{
-			nEvenCounter++;
-			continue;
-		}
-		else if (szWinnerTable[i] == 'A')
-		{
-			cout << "A";
-			break;
-		}
-		else
-		{
-			cout << "B";
-			break;
-		}
-	}
-
-	if (nEvenCounter == GAMEROUND)
-		cout << "D";
+	else
+		printf("%c", nLastWinner);
 }
